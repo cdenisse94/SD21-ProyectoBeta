@@ -17,7 +17,7 @@ public class AsynchMessReceiver {
 
     // Name of the queue we will receive messages from
     //consume TODOS LOS MENSAJES DE
-    private static String subject = "Usuario_A_Cola";
+    private static String subject = "Usuario1Contacto3";
 
     public void getMessages() {
 
