@@ -6,22 +6,23 @@ import java.util.List;
 
 public class User implements Serializable {
 
-    private String id;
+    private int id;
     private List<User> subscription = new ArrayList<User>();
 
-    public User(String id) {
+    public User(int id) {
+
         this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public List<User> getSubscription(){
+    public List<User> getSubscription() {
         return subscription;
     }
 
-    public boolean addSubcription(String id){
+    public boolean addSubcription(int id) {
         subscription.add(new User(id));
         return true;
     }
