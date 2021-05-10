@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="center" hgap="10" minHeight="400.0" minWidth="400.0" prefHeight="450.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" scaleShape="false">
+         <children>
+            <Label layoutX="27.0" layoutY="25.0" text="Turbo Message App" textFill="#1388ed">
+               <font>
+                  <Font name="Times New Roman Bold" size="40.0" />
+               </font>
+            </Label>
+            <Button fx:id="btEntrar" layoutX="110.0" layoutY="366.0" mnemonicParsing="false" onAction="#btEntrarClick" prefHeight="51.0" prefWidth="181.0" text="Iniciar Sesión" textFill="#096bf5">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="120.0" fitWidth="144.0" layoutX="143.0" layoutY="90.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <image>
+                  <Image url="@../img/TB.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="137.0" layoutY="260.0" text="Ingresa tu ID">
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfID" alignment="CENTER" layoutX="68.0" layoutY="291.0" prefHeight="35.0" prefWidth="266.0">
+               <font>
+                  <Font name="Times New Roman" size="24.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+   </children>
+</GridPane>
