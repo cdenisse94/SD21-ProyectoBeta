@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
+   <children>
+      <Label layoutX="42.0" layoutY="60.0" text="CHATS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbContacto" layoutX="42.0" layoutY="107.0" prefHeight="17.0" prefWidth="247.0" />
+      <Button fx:id="btMensaje" layoutX="166.0" layoutY="36.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="98.0" text="Nuevo mensaje" />
+      <TextArea fx:id="taNuevoMens" layoutX="42.0" layoutY="238.0" prefHeight="122.0" prefWidth="247.0" />
+      <Button fx:id="btEnviar" layoutX="391.0" layoutY="270.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="112.0" text="Enviar">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="taMensajes" layoutX="313.0" layoutY="25.0" prefHeight="219.0" prefWidth="267.0" />
+   </children>
+</AnchorPane>
