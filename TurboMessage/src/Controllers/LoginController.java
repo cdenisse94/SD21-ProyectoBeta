@@ -14,7 +14,7 @@ import java.io.IOException;
 public class LoginController {
 
     Login login = new Login();
-    ChatsController chats;
+    InterfaceController chats;
 
     public TextField tfID = new TextField();
     @FXML

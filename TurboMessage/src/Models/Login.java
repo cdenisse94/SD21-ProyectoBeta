@@ -8,8 +8,8 @@ public class Login {
 
     public List<UserThread> userThreads = new ArrayList<>();
 
-    public void addClient(String id){
-        userThreads.add(new UserThread(id));
+    public void addClient(UserThread user){
+        userThreads.add(user);
         System.out.println("Total de usuarios: " + userThreads.size());
     }
 
@@ -22,12 +22,13 @@ public class Login {
     }
 
     public void iniciaThread(String id) throws InterruptedException {
-        addClient(id);
         UserThread newUser = new UserThread(id);
+        addClient(newUser);
         newUser.start();
         Thread.sleep(1000);
     }
 
+    //CREO QUE AUN NO JALA
     public boolean puedoAgregarId(String id){
         Iterator<UserThread> it = userThreads.iterator();
         while (it.hasNext()){

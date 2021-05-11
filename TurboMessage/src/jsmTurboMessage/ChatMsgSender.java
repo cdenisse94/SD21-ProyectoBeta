@@ -9,20 +9,21 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class FirstMSG {
+public class ChatMsgSender {
 
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL; // creo la conexión por defecto de activemq
     private static String subject;
     private static String subject2;
-    private static int id ;
-    private static int idContacto ;
+    private static String id ;
+    private static String idNuevoContacto ;
+    private static String mensaje;
 
-    public FirstMSG(int id, int idContacto) {
+    public ChatMsgSender(String id, String idContacto,String mensaje) {
         this.id = id;
-        this.idContacto = idContacto;
-        this.subject = id +"PendienteCon"+idContacto;
-        //this.subject = "DeUsuario"+id+"_ParaContacto"+idContacto ;
-        this.subject2 = "DeUsuario"+idContacto+"_ParaContacto"+id ;
+        this.idNuevoContacto = idContacto;
+        this.subject = id +"ChatCon"+idContacto;
+        this.subject2 = idContacto +"ChatCon"+id;
+        this.mensaje = mensaje;
     }
 
     public void produceMessages() {
@@ -44,7 +45,6 @@ public class FirstMSG {
             // -------------------------------------------------------------------------------------------
 
             //Genero el recurso fisico COLA yo --> otro
-            //Es transparente, no importa si aun no ha sido creada o ya fue creada
             Destination destination = session.createQueue(subject);
 
             //EL producer es el que consume el servicio, en este caso debemos de crear tantos como el usuario tenga contactos
@@ -54,29 +54,17 @@ public class FirstMSG {
 
             // -------------------------------------------------------------------------------------------
 
-            //Destination destination2 = session.createQueue(subject2);
-            //messageConsumer = session.createConsumer(destination2);
+            Destination destination2 = session.createQueue(subject2);
+            messageConsumer = session.createConsumer(destination2);
 
             // -------------------------------------------------------------------------------------------
 
 
-            //Creamos mensaje
+            //Solo mandamos el ID del usuario
             textMessage = session.createTextMessage();
-
-            textMessage.setText("Hola! soy el contacto: ");
+            textMessage.setText(mensaje);
             System.out.println("Mensaje enviado: " + textMessage.getText());
             messageProducer.send(textMessage);
-
-
-            textMessage.setText(String.valueOf(+id));
-            System.out.println("Mensaje enviado: " + textMessage.getText());
-            messageProducer.send(textMessage);
-
-            textMessage.setText("¿Te gustaria hacer contacto conmigo? (S/N)");
-            System.out.println("Mensaje enviado: " + textMessage.getText());
-            messageProducer.send(textMessage);
-
-
             messageProducer.close();
             session.close();
             connection.close();
