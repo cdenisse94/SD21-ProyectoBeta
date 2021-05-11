@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,8 @@ import java.io.IOException;
 
 public class LoginController {
 
-    Server server = new Server();
+    Login login = new Login();
+    ChatsController chats;
 
     public TextField tfID = new TextField();
     @FXML
@@ -28,21 +30,20 @@ public class LoginController {
             alert.setHeaderText("Identificador vacío");
             tfID.requestFocus();
             alert.showAndWait();
-        } else{
-            iniciaThread(id);
-            ventanaMenu(id);
+        } else if(login.puedoAgregarId(id)){
+            login.iniciaThread(id);
+            ventanaChats(id);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Sesión iniciada");
+            alert.setHeaderText("Usuario ya tiene la sesión iniciada");
+            tfID.requestFocus();
+            alert.showAndWait();
         }
     }
 
-    public void iniciaThread(String id) throws InterruptedException {
-        server.addClient(id);
-        UserThread newUser = new UserThread(id);
-        newUser.start();
-        Thread.sleep(1000);
-    }
-
-    public void ventanaMenu(String id) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("../Views/menu.fxml"));
+    public void ventanaChats(String id) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("../Views/Chats.fxml"));
         Scene secondScene = new Scene(root, 600, 400);
         Stage secondStage = new Stage();
         secondStage.setTitle(id);

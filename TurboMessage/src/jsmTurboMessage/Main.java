@@ -1,4 +1,4 @@
-package Controllers;
+package jsmTurboMessage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,14 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../Views/ingreso.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Views/Login.fxml"));
         primaryStage.setTitle("Bienvenido a Turbo Message");
         primaryStage.setScene(new Scene(root, 400, 450));
         primaryStage.show();
